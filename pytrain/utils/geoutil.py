@@ -12,7 +12,7 @@ import json
 class GeoUtil:
 
     @staticmethod
-    def find_address_from_GPS(self, latitude, longitude):
+    def find_address_from_GPS(latitude, longitude):
         """
         使用Geocoding API把经纬度坐标转换为结构化地址。
         :param GPS:
@@ -20,7 +20,7 @@ class GeoUtil:
         """
         secret_key = '273ea561fc6cf2fc908c2936a58cb4f2'             # 高德地图创应用的秘钥
         amap_api = "https://restapi.amap.com/v3/geocode/regeo?key={0}&location={1},{2}&output=JSON&radius=1000&extensions=all".format(
-            secret_key, lng, lat)
+            secret_key, longitude, latitude)
         # print(amap_api)
         response = requests.get(amap_api)
         content = response.text.replace("renderReverse&&renderReverse(", "")[:-1]
@@ -29,3 +29,7 @@ class GeoUtil:
         formatted_address = "{0}-{1}-{2}".format(
             baidu_map_address["regeocode"]["addressComponent"]["province"], baidu_map_address["regeocode"]["addressComponent"]["city"], baidu_map_address["regeocode"]["addressComponent"]["district"])
         return formatted_address
+
+
+if __name__ == "__main__":
+    print(GeoUtil.find_address_from_GPS(0, 0))
