@@ -65,4 +65,4 @@ class PicInfoUtil:
 
 
 if __name__ == "__main__":
-    print(PicInfoUtil.find_GPS_image("/Users/dengwei/Downloads/vedio/VID_20190710_205629.mp4"))
+    print(PicInfoUtil.find_GPS_image("/Volumes/ntfs_dw/Photos1/2018/01/IMG_0090.HEIC"))
